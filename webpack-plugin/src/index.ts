@@ -24,9 +24,9 @@ function resolveMonacoPath(filePath: string, monacoEditorPath: string | undefine
 		return require.resolve(path.join(monacoEditorPath, 'esm', filePath));
 	}
 
-	try {
-		return require.resolve(path.join('monaco-editor/esm', filePath));
-	} catch (err) {}
+	// try {
+	// 	return require.resolve(path.join('monaco-editor/esm', filePath));
+	// } catch (err) {}
 
 	try {
 		return require.resolve(path.join(process.cwd(), 'node_modules/monaco-editor/esm', filePath));

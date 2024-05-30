@@ -21,7 +21,11 @@ export const pitch: PitchLoaderDefinitionFunction<ILoaderOptions> = function pit
 		post = []
 	} = (this.query as ILoaderOptions) || {};
 
-	this.cacheable(false);
+	console.log('monaco editor loader mode', this.mode === 'development' ? 'dev' : 'prod');
+	const isProductionLikeMode = this.mode === 'production' || !this.mode;
+	if (isProductionLikeMode) {
+		this.cacheable(false);
+	}
 	const callback = this.async();
 
 	// HACK: NamedModulesPlugin overwrites existing modules when requesting the same module via
